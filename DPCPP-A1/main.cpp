@@ -2,5 +2,7 @@
 
 int main()
 {
+	Game g;
+	g.run();
 	return 0;
 }
