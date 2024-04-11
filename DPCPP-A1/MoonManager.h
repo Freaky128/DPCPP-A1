@@ -5,11 +5,14 @@
 #include <memory>
 #include <iostream>
 
+class Game;
+
 class MoonManager 
 {
 private:
-    std::vector<std::unique_ptr<AbstractMoon> > moons;
+    std::vector<std::shared_ptr<AbstractMoon> > moons;
 
 public:
     void registerMoon(AbstractMoon* moon);
+    std::shared_ptr<AbstractMoon> getStartingMoon();
 };

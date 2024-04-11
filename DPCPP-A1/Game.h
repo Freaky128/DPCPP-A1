@@ -5,13 +5,18 @@
 #include "MoonManager.h"
 #include "Moon.h"
 #include "CorpMoon.h"
+#include "game_title.h"
 
 class Game
 {
 private:
-    int balance = 0;
+    bool isRunning = true;
+    int dayNum = 1;
+    int quota = 150;
+    int balance = 50;
     int cargoBalance = 0;
-    int employees = 0;
+    int employees = 4;
+    std::shared_ptr<AbstractMoon> moon;
     ItemManager itemManager;
     MoonManager moonManager;
 
