@@ -31,6 +31,7 @@ public:
     void buy() { bought = true; }
     int getPrice() const { return price; }
     float getScrapValMult() const { return scrapValMult; }
+    float getEpSurvivalMult() const { return explorerSurvivalMult; }
     float getOpSurvivalMult() const { return opSurvivalMult; }
     float getSaveChance() const { return saveChance; }
     float getLootRecovMult() const { return lootRecovMult; }

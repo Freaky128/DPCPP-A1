@@ -9,7 +9,7 @@ Game::Game() {
     itemManager.registerItem(new Item("Teleporter", 300, 1, 1, 1, 0.33, 1));
     itemManager.registerItem(new Item("Inverse-teleporter", 400, 1.10, 0.8, 1, 0, 1));
     itemManager.registerItem(new Item("Backpack", 500, 1, 1, 1, 0, 1.25));
-    itemManager.registerItem(new Item("Hydraulics Mk2", 1000, 1, 1, 1.25, 0, 1));
+    itemManager.registerItem(new Item("Hydraulics-Mk2", 1000, 1, 1, 1.25, 0, 1));
 
     moonManager.registerMoon(new CorpMoon("Corporation"));
     moonManager.registerMoon(new Moon("Prototyping", 3, 30, 0.5));
@@ -67,7 +67,7 @@ void Game::run()
             }
             else if (command == "send") {
                 if (isLanded) {
-                    if (args.empty() || args.size() > 1 || util::parsePositiveInt(args[0]) == -1) {
+                    if (args.empty() || args.size() > 1 || util::parsePositiveInt(args[0]) == -1) { // possibly could do a invalid employee count message
                         std::cout << "\nBad command; the syntax is: \"send numberOfEmployees\" \n" << std::endl;
                     }
                     else if (util::parsePositiveInt(args[0]) > employees) {
@@ -111,6 +111,38 @@ void Game::run()
     return;
 }
 
+void Game::land()
+{
+    isLanded = true;
+    std::cout << "\n\nWELCOME TO " << moon->name() << "!\n" << std::endl;
+    std::cout << "Current cargo value: $" << cargoBalance << std::endl; // could/should encapsulate these in a function
+    std::cout << "Current balance: $" << balance << std::endl;
+    std::cout << "Current quota: $" << quota << " (" << 4 - (dayNum % 4) << " days left to meet quota)" << std::endl;
+    std::cout << "Number of employees: " << employees << std::endl;
+
+    moon->landingMessage();
+}
+
+int Game::getQuota() const
+{
+    return quota;
+}
+
+int Game::getBalance() const
+{
+    return balance;
+}
+
+int Game::getCargoValue() const
+{
+    return cargoBalance;
+}
+
+int Game::getEmployees() const
+{
+    return employees;
+}
+
 std::string Game::getMoonNameLower() const
 {
     std::string name = moon->name();
@@ -123,21 +155,6 @@ std::string Game::getMoonName() const
     return moon->name();
 }
 
-int Game::getBalance() const
-{
-    return balance;
-}
-
-int Game::getQuota() const
-{
-    return quota;
-}
-
-int Game::getCargoValue() const
-{
-    return cargoBalance;
-}
-
 std::vector<std::shared_ptr<Item> >& Game::getItems()
 {
     return items;
@@ -148,9 +165,19 @@ void Game::setBalance(int value)
     balance += value;
 }
 
-void Game::addItem(std::shared_ptr<Item> item)
+void Game::setCargoBalance(int value)
 {
-    items.push_back(item);
+    cargoBalance += value;
+}
+
+void Game::clearCargoBalance()
+{
+    cargoBalance = 0;
+}
+
+void Game::setEmployees(int value)
+{
+    employees = value;
 }
 
 void Game::setMoon(std::shared_ptr<AbstractMoon> moon)
@@ -158,14 +185,7 @@ void Game::setMoon(std::shared_ptr<AbstractMoon> moon)
     this->moon = moon;
 }
 
-void Game::land()
+void Game::addItem(std::shared_ptr<Item> item)
 {
-    isLanded = true;
-    std::cout << "\n\nWELCOME TO " << moon->name() << "!\n" << std::endl;
-    std::cout << "Current cargo value: $" << cargoBalance << std::endl; // could/should encapsulate these in a function
-    std::cout << "Current balance: $" << balance << std::endl;
-    std::cout << "Current quota: $" << quota << " (" << 4 - (dayNum % 4) << " days left to meet quota)" << std::endl;
-    std::cout << "Number of employees: " << employees << std::endl;
-
-    moon->landingMessage();
+    items.push_back(item);
 }

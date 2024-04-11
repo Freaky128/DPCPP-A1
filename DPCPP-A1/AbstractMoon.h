@@ -7,8 +7,8 @@ class Game;
 enum class MoonWeather { 
     Clear = 0,
     Flooded,
-    Eclisped,
-    Stormy 
+    Stormy,
+    Eclisped
 };
 
 class AbstractMoon 
@@ -35,9 +35,9 @@ public:
         case 1:
             return "Flooded";
         case 2:
-            return "Eclisped";
-        case 3:
             return "Stormy";
+        case 3:
+            return "Eclisped";
         }
     }
 };
