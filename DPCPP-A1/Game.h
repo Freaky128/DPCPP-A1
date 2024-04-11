@@ -16,11 +16,12 @@ private:
     bool isRunning = true;
     int dayNum = 1;
     int quota = 150;
-    int balance = 50;
+    int balance = 120;
     int cargoBalance = 0;
     int employees = 4;
     bool isLanded = false;
     std::shared_ptr<AbstractMoon> moon;
+    std::vector<std::shared_ptr<Item> > items;
     ItemManager itemManager;
     MoonManager moonManager;
 
@@ -32,6 +33,9 @@ public:
     void receiveCommand();
     std::string getMoonNameLower();
     std::string getMoonName();
+    int getBalance();
+    void setBalance(int value);
+    void addItem(std::shared_ptr<Item> item);
     void setMoon(std::shared_ptr<AbstractMoon> moon);
     void land();
 };

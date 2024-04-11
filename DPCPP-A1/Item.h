@@ -27,7 +27,8 @@ public:
     }
 
     std::string getName() const { return name;}
-    bool getBought() const { return bought; };
+    bool isBought() const { return bought; };
+    void buy() { bought = true; }
     int getPrice() const { return price; }
     float getScrapValMult() const { return scrapValMult; }
     float getOpSurvivalMult() const { return opSurvivalMult; }

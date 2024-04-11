@@ -5,6 +5,8 @@
 #include <vector>
 #include <memory>
 
+class Game;
+
 class ItemManager
 {
 private:
@@ -13,4 +15,5 @@ private:
 public:
     void registerItem(Item* item);
     void displayItems(int& balance);
+    void buy(std::vector<std::string> args, Game& g);
 };

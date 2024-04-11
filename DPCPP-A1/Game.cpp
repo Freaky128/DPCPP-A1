@@ -91,7 +91,7 @@ void Game::run()
                 itemManager.displayItems(balance);
             }
             else if (command == "buy") {
-
+                itemManager.buy(args, *this);
             }
             else if (command == "inventory") {
 
@@ -121,6 +121,21 @@ std::string Game::getMoonNameLower()
 std::string Game::getMoonName()
 {
     return moon->name();
+}
+
+int Game::getBalance()
+{
+    return balance;
+}
+
+void Game::setBalance(int value)
+{
+    balance += value;
+}
+
+void Game::addItem(std::shared_ptr<Item> item)
+{
+    items.push_back(item);
 }
 
 void Game::setMoon(std::shared_ptr<AbstractMoon> moon)
