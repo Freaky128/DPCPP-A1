@@ -42,7 +42,7 @@ void Game::run()
             std::cout << ">";
             std::string command;
             std::vector<std::string> args;
-            std::cin >> command;
+            std::getline(std::cin, command);
             util::lower(command);
             util::splitArguments(command, args);
 
@@ -50,7 +50,12 @@ void Game::run()
                 moonManager.displayMoons(balance);
             }
             else if (command == "route") {
-                
+                if (!isLanded) {
+                    moonManager.route(args, *this);
+                }
+                else {
+                    std::cout << "\nThis command is not available at this time.\n" << std::endl;
+                }
             }
             else if (command == "land") {
 
@@ -86,4 +91,9 @@ void Game::run()
     }
 
     return;
+}
+
+void Game::setMoon(std::shared_ptr<AbstractMoon> moon)
+{
+    this->moon = moon;
 }

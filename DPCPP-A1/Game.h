@@ -30,4 +30,5 @@ public:
     Game();
     void run();
     void receiveCommand();
+    void setMoon(std::shared_ptr<AbstractMoon> moon);
 };

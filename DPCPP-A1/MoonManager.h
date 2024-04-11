@@ -17,4 +17,5 @@ public:
     std::shared_ptr<AbstractMoon> getStartingMoon();
     void displayMoons(int& balance);
     void onDayBegin(Game& g);
+    void route(std::vector<std::string> args, Game& g);
 };
