@@ -50,13 +50,16 @@ void MoonManager::route(std::vector<std::string> args, Game& g)
     if (args.empty() || args.size() > 1) {
         std::cout << "\nBad command; the syntax is: \"route moonName\" \n" << std::endl;
     }
+    else if (args[0] == g.getMoonNameLower()) {
+        std::cout << "\nAlready orbiting " << g.getMoonName() << "\n" << std::endl;
+    }
     else {
         for (std::shared_ptr<AbstractMoon>& i : moons) {
             std::string name = i->name();
             util::lower(name);
             if (args[0] == name) {
                 g.setMoon(i);
-                std::cout << "\nNow orbiting " << i->name() << ". Use the LAND command to land.\n" << std::endl; // bit cheeky because i don't get the moon name from Game itself
+                std::cout << "\nNow orbiting " << g.getMoonName() << ". Use the LAND command to land.\n" << std::endl;
                 return;
             }
         }

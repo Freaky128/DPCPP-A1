@@ -21,4 +21,5 @@ public:
     float getBaseSurvival() const { return baseSurvival; }
 
     void onDayBegin(Game& g);
+    void landingMessage();
 };

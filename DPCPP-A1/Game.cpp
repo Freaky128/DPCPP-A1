@@ -58,7 +58,12 @@ void Game::run()
                 }
             }
             else if (command == "land") {
-
+                if (!isLanded) {
+                    land();
+                }
+                else {
+                    std::cout << "\nThis command is not available at this time.\n" << std::endl;
+                }
             }
             else if (command == "send") {
 
@@ -93,7 +98,31 @@ void Game::run()
     return;
 }
 
+std::string Game::getMoonNameLower() 
+{
+    std::string name = moon->name();
+    util::lower(name);
+    return name;
+}
+
+std::string Game::getMoonName()
+{
+    return moon->name();
+}
+
 void Game::setMoon(std::shared_ptr<AbstractMoon> moon)
 {
     this->moon = moon;
+}
+
+void Game::land()
+{
+    isLanded = true;
+    std::cout << "\n\nWELCOME TO " << moon->name() << "!\n" << std::endl;
+    std::cout << "Current cargo value: $" << cargoBalance << std::endl; // could/should encapsulate these in a function
+    std::cout << "Current balance: $" << balance << std::endl;
+    std::cout << "Current quota: $" << quota << " (" << 4 - (dayNum % 4) << " days left to meet quota)" << std::endl;
+    std::cout << "Number of employees: " << employees << std::endl;
+
+    moon->landingMessage();
 }

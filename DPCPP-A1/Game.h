@@ -30,5 +30,8 @@ public:
     Game();
     void run();
     void receiveCommand();
+    std::string getMoonNameLower();
+    std::string getMoonName();
     void setMoon(std::shared_ptr<AbstractMoon> moon);
+    void land();
 };
