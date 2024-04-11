@@ -2,6 +2,8 @@
 
 #include <string>
 
+class Game;
+
 enum class MoonWeather { 
     Clear = 0,
     Flooded,
@@ -13,13 +15,27 @@ class AbstractMoon
 {
 private:
     std::string moonName;
-    MoonWeather weather;
+
+protected:
+    MoonWeather weather = MoonWeather::Clear;
 
 public:
-    AbstractMoon(std::string name) {
-        this->moonName = name;
-    }
+    AbstractMoon(std::string name) { this->moonName = name; }
 
     const std::string& name() const { return moonName; }
-
+    virtual void onDayBegin(Game& g) { return; }
+    
+    std::string getWeather() {
+        int i = static_cast<int>(weather);
+        switch (i) {
+        case 0:
+            return "";
+        case 1:
+            return "Flooded";
+        case 2:
+            return "Eclisped";
+        case 3:
+            return "Stormy";
+        }
+    }
 };

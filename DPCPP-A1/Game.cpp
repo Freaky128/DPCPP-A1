@@ -1,6 +1,8 @@
 #include "Game.h"
 
 Game::Game() {
+    myGenerator.seed(std::random_device{}());
+
     itemManager.registerItem(new Item("Flashlight", 60, 1, 1.05, 1, 0, 1)); // TODO: could change this to a csv reader for better dynamacy if get time
     itemManager.registerItem(new Item("Shovel", 100, 1, 1.05, 1, 0, 1));
     itemManager.registerItem(new Item("Pro-flashlight", 200, 1, 1.10, 1, 0, 1));
@@ -24,6 +26,8 @@ void Game::run()
     std::cout << "\nWelcome!\nWe trust you will be a great asset to the corporation!" << std::endl;
 
     while (isRunning) {
+        moonManager.onDayBegin(*this);
+
         std::cout << "\n============= DAY " << dayNum << " =============" << std::endl;
         std::cout << "Current cargo value: $" << cargoBalance << std::endl;
         std::cout << "Current balance: $" << balance << std::endl;
@@ -33,6 +37,50 @@ void Game::run()
         std::cout << ">MOONS\nTo see the list of moons the autopilot can route to.\n" << std::endl;
         std::cout << ">STORE\nTo see the company store's selection of useful items.\n" << std::endl;
         std::cout << ">INVENTORY\nTo see the list of items you've already bought.\n" << std::endl;
+
+        while (true) {
+            std::cout << ">";
+            std::string command;
+            std::vector<std::string> args;
+            std::cin >> command;
+            util::lower(command);
+            util::splitArguments(command, args);
+
+            if (command == "moons") {
+                moonManager.displayMoons(balance);
+            }
+            else if (command == "route") {
+                
+            }
+            else if (command == "land") {
+
+            }
+            else if (command == "send") {
+
+            }
+            else if (command == "sell") {
+
+            }
+            else if (command == "leave") {
+
+            }
+            else if (command == "store") {
+
+            }
+            else if (command == "buy") {
+
+            }
+            else if (command == "inventory") {
+
+            }
+            else if (command == "exit") {
+
+            }
+            else {
+                std::cout << "\nUnknown command.\n" << std::endl;
+            }
+
+        }
 
         isRunning = false;
     }

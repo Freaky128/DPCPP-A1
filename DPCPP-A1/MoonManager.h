@@ -15,4 +15,6 @@ private:
 public:
     void registerMoon(AbstractMoon* moon);
     std::shared_ptr<AbstractMoon> getStartingMoon();
+    void displayMoons(int& balance);
+    void onDayBegin(Game& g);
 };

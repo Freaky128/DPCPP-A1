@@ -3,7 +3,7 @@
 #
 
 # Add source to this project's executable.
-add_executable (DPCPP-A1 "main.cpp"  "Game.h"  "MoonManager.h" "Item.h" "AbstractMoon.h" "Moon.h" "CorpMoon.h" "Game.cpp"    "ItemManager.h" "ItemManager.cpp" "MoonManager.cpp" "util.h" "util.cpp" )
+add_executable (DPCPP-A1 "main.cpp"  "Game.h"  "MoonManager.h" "Item.h" "AbstractMoon.h" "Moon.h" "CorpMoon.h" "Game.cpp"    "ItemManager.h" "ItemManager.cpp" "MoonManager.cpp" "util.h" "util.cpp"  "Moon.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET DPCPP-A1 PROPERTY CXX_STANDARD 20)
