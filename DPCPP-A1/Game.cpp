@@ -66,7 +66,20 @@ void Game::run()
                 }
             }
             else if (command == "send") {
-
+                if (isLanded) {
+                    if (args.empty() || args.size() > 1 || util::parsePositiveInt(args[0]) == -1) {
+                        std::cout << "\nBad command; the syntax is: \"send numberOfEmployees\" \n" << std::endl;
+                    }
+                    else if (util::parsePositiveInt(args[0]) > employees) {
+                        std::cout << "\nOnly " << employees << " employees are left.\n" << std::endl;
+                    }
+                    else {
+                        moon->sendEmployees(*this, util::parsePositiveInt(args[0]));
+                    }
+                }
+                else {
+                    std::cout << "\nThis command is not available at this time.\n" << std::endl;
+                }
             }
             else if (command == "sell") {
 

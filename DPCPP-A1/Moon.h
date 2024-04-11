@@ -22,4 +22,5 @@ public:
 
     void onDayBegin(Game& g);
     void landingMessage();
+    void sendEmployees(Game& g, int count);
 };

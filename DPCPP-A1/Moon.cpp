@@ -19,3 +19,8 @@ void Moon::landingMessage()
     std::cout << "\nType SEND followed by the number of employees you wish to send inside the facility. All the other employees will stay on the ship." << std::endl;
     std::cout << "Type LEAVE to leave the planet. \n" << std::endl;
 }
+
+void Moon::sendEmployees(Game& g, int count)
+{
+    return;
+}

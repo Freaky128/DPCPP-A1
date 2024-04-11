@@ -24,7 +24,8 @@ public:
 
     const std::string& name() const { return moonName; }
     virtual void onDayBegin(Game& g) { return; }
-    virtual void landingMessage() { return; }
+    virtual void landingMessage() = 0;
+    virtual void sendEmployees(Game& g, int count) = 0;
     
     std::string getWeather() {
         int i = static_cast<int>(weather);
