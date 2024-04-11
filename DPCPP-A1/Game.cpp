@@ -88,7 +88,7 @@ void Game::run()
 
             }
             else if (command == "store") {
-
+                itemManager.displayItems(balance);
             }
             else if (command == "buy") {
 

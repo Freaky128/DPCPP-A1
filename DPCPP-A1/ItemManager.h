@@ -8,8 +8,9 @@
 class ItemManager
 {
 private:
-    std::vector<std::unique_ptr<Item> > items;
+    std::vector<std::shared_ptr<Item> > items;
 
 public:
     void registerItem(Item* item);
+    void displayItems(int& balance);
 };

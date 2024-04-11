@@ -7,6 +7,7 @@ struct Item
 {
 private:
     std::string name;
+    bool bought = false;
     int price;
     float scrapValMult;
     float explorerSurvivalMult;
@@ -26,6 +27,7 @@ public:
     }
 
     std::string getName() const { return name;}
+    bool getBought() const { return bought; };
     int getPrice() const { return price; }
     float getScrapValMult() const { return scrapValMult; }
     float getOpSurvivalMult() const { return opSurvivalMult; }
