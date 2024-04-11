@@ -64,4 +64,21 @@ void ItemManager::buy(std::vector<std::string> args, Game& g)
     }
 }
 
+void ItemManager::inventory(Game& g)
+{
+    std::cout << "The following items are available." << std::endl;
+    std::cout << "---------------------------------------\n" << std::endl;
+    std::vector<std::shared_ptr<Item> > inventory = g.getItems();
+    if (inventory.empty()) {
+        std::cout << "(Empty)" << std::endl;
+    }
+    else {
+        for (std::shared_ptr<Item>& i : inventory) {
+            std::cout << "* " << i->getName() << std::endl;
+        }
+    }
+    std::cout << "\nBalance: $" << g.getBalance() << "  (quota is $" << g.getQuota() << ")" << std::endl;
+    std::cout << "Cargo value: $" << g.getCargoValue() << "\n" << std::endl;
+}
+
 

@@ -16,7 +16,7 @@ private:
     bool isRunning = true;
     int dayNum = 1;
     int quota = 150;
-    int balance = 120;
+    int balance = 500;
     int cargoBalance = 0;
     int employees = 4;
     bool isLanded = false;
@@ -31,9 +31,12 @@ public:
     Game();
     void run();
     void receiveCommand();
-    std::string getMoonNameLower();
-    std::string getMoonName();
-    int getBalance();
+    std::string getMoonNameLower() const;
+    std::string getMoonName() const;
+    int getBalance() const;
+    int getQuota() const;
+    int getCargoValue() const;
+    std::vector<std::shared_ptr<Item> >& getItems();
     void setBalance(int value);
     void addItem(std::shared_ptr<Item> item);
     void setMoon(std::shared_ptr<AbstractMoon> moon);

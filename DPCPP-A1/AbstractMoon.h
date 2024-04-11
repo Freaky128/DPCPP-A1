@@ -31,7 +31,7 @@ public:
         int i = static_cast<int>(weather);
         switch (i) {
         case 0:
-            return "";
+            return ""; // could do a default case instead
         case 1:
             return "Flooded";
         case 2:

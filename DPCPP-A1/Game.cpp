@@ -94,7 +94,7 @@ void Game::run()
                 itemManager.buy(args, *this);
             }
             else if (command == "inventory") {
-
+                itemManager.inventory(*this);
             }
             else if (command == "exit") {
 
@@ -111,21 +111,36 @@ void Game::run()
     return;
 }
 
-std::string Game::getMoonNameLower() 
+std::string Game::getMoonNameLower() const
 {
     std::string name = moon->name();
     util::lower(name);
     return name;
 }
 
-std::string Game::getMoonName()
+std::string Game::getMoonName() const
 {
     return moon->name();
 }
 
-int Game::getBalance()
+int Game::getBalance() const
 {
     return balance;
+}
+
+int Game::getQuota() const
+{
+    return quota;
+}
+
+int Game::getCargoValue() const
+{
+    return cargoBalance;
+}
+
+std::vector<std::shared_ptr<Item> >& Game::getItems()
+{
+    return items;
 }
 
 void Game::setBalance(int value)
