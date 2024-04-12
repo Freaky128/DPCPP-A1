@@ -37,6 +37,6 @@ public:
     float getLootRecovMult() const { return lootRecovMult; }
 
     ~Item() {
-       std::cout << "deleted item" << std::endl;
+       //std::cout << "deleted item" << std::endl;
     }
 };

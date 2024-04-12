@@ -27,6 +27,6 @@ public:
     void sellCargo(Game& g, int amount);
 
     ~Moon() {
-        std::cout << "deleted moon" << std::endl;
+        //std::cout << "deleted moon" << std::endl;
     }
 };

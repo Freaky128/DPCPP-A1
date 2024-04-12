@@ -5,7 +5,7 @@ void ItemManager::registerItem(Item* item)
 {
     std::shared_ptr<Item> temp(item);
 
-    std::cout << temp->getName() << std::endl;
+    //std::cout << temp->getName() << std::endl;
     
     items.push_back(std::move(temp));
     

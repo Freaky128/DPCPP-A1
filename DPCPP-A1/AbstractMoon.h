@@ -33,18 +33,18 @@ public:
     std::string getWeather() {
         int i = static_cast<int>(weather);
         switch (i) {
-        case 0:
-            return ""; // could do a default case instead
         case 1:
             return "Flooded";
         case 2:
             return "Stormy";
         case 3:
             return "Eclisped";
+        default:
+            return "";
         }
     }
 
     virtual ~AbstractMoon() {
-        std::cout << "AbstractMoon destructor" << std::endl;
+        //std::cout << "AbstractMoon destructor" << std::endl;
     }
 };

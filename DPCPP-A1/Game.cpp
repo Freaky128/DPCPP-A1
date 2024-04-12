@@ -73,8 +73,11 @@ void Game::run()
             }
             else if (command == "send") {
                 if (isLanded) {
-                    if (args.empty() || args.size() > 1 || util::parsePositiveInt(args[0]) == -1) { // possibly could do a invalid employee count message
+                    if (args.empty() || args.size() > 1) {
                         std::cout << "\nBad command; the syntax is: \"send numberOfEmployees\" \n" << std::endl;
+                    }
+                    else if (util::parsePositiveInt(args[0]) == -1) {
+                        std::cout << "\nInvalid employee count \"" << args[0] << "\"\n" << std::endl;
                     }
                     else if (util::parsePositiveInt(args[0]) > employees) {
                         std::cout << "\nOnly " << employees << " employees are left.\n" << std::endl;

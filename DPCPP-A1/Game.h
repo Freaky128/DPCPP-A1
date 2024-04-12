@@ -34,7 +34,6 @@ public:
     void land();
     void leave();
     void gameExit();
-    void receiveCommand();
 
     int getQuota() const;
     int getBalance() const;
