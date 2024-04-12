@@ -14,9 +14,10 @@ class Game
 {
 private:
     bool isRunning = true;
+    bool isSameDay = true;
     int dayNum = 1;
     int quota = 150;
-    int balance = 5000;
+    int balance = 500;
     int cargoBalance = 0;
     int employees = 4;
     bool isLanded = false;
@@ -31,6 +32,8 @@ public:
     Game();
     void run();
     void land();
+    void leave();
+    void gameExit();
     void receiveCommand();
 
     int getQuota() const;

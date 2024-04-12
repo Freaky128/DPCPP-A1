@@ -126,11 +126,13 @@ void Moon::sendEmployees(Game& g, int count)
         aliveEmployees -= deadOperators;
     }
 
+    std::cout << std::endl;
+
     g.setEmployees(aliveEmployees);
 
     if (aliveEmployees == 0) {
         g.clearCargoBalance();
-        std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\nAll the employees died and the scrap is lost.\nAutopilot will now bring the ship back to orbit.\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n" << std::endl;
-        //g.leave();
+        std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\nAll the employees died and the scrap is lost.\nAutopilot will now bring the ship back to orbit.\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+        g.leave();
     }
 }

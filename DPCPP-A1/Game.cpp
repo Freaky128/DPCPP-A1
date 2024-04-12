@@ -23,22 +23,28 @@ Game::Game() {
 void Game::run()
 {
     std::cout << DEADLY_CORP_TITLE << std::endl;
-    std::cout << "\nWelcome!\nWe trust you will be a great asset to the corporation!" << std::endl;
+    std::cout << "\nWelcome!\nWe trust you will be a great asset to the corporation!\n" << std::endl;
 
     while (isRunning) {
         moonManager.onDayBegin(*this);
 
-        std::cout << "\n============= DAY " << dayNum << " =============" << std::endl;
+        std::cout << "============= DAY " << dayNum << " =============" << std::endl;
         std::cout << "Current cargo value: $" << cargoBalance << std::endl;
         std::cout << "Current balance: $" << balance << std::endl;
-        std::cout << "Current quota: $" << quota << " (" << 4 - (dayNum % 4) << " days left to meet quota)" << std::endl;
+        std::cout << "Current quota: $" << quota << " (" << (3 - (dayNum - 1) % 4) % 4 << " days left to meet quota)" << std::endl;
         std::cout << "Currently orbiting: " << moon->name() << "\n" << std::endl;
 
         std::cout << ">MOONS\nTo see the list of moons the autopilot can route to.\n" << std::endl;
         std::cout << ">STORE\nTo see the company store's selection of useful items.\n" << std::endl;
         std::cout << ">INVENTORY\nTo see the list of items you've already bought.\n" << std::endl;
 
-        while (true) {
+        if ((3 - (dayNum - 1) % 4) % 4 == 0) {
+            std::cout << "NOTE: 0 days left to meet quota. Type \"route corporation\" to go to the corp's moon and sell the scrap you collected for cash.\n" << std::endl;
+        }
+
+        isSameDay = true;
+
+        while (isSameDay) {
             std::cout << ">";
             std::string command;
             std::vector<std::string> args;
@@ -85,7 +91,12 @@ void Game::run()
 
             }
             else if (command == "leave") {
-
+                if (isLanded) {
+                    leave();
+                }
+                else {
+                    std::cout << "\nThis command is not available at this time.\n" << std::endl;
+                }
             }
             else if (command == "store") {
                 itemManager.displayItems(balance);
@@ -97,7 +108,7 @@ void Game::run()
                 itemManager.inventory(*this);
             }
             else if (command == "exit") {
-
+                gameExit();
             }
             else {
                 std::cout << "\nUnknown command.\n" << std::endl;
@@ -105,7 +116,25 @@ void Game::run()
 
         }
 
-        isRunning = false;
+        if ((3 - (dayNum - 1) % 4) % 4 == 0) {
+            if (balance >= quota) {
+                quota = quota * 1.5;
+                std::cout << "-------------------------------------" << std::endl;
+                std::cout << "CONGRATULATIONS ON MAKING QUOTA!\nNew quota: $" << quota << std::endl;
+                std::cout << "-------------------------------------\n\n" << std::endl;
+            }
+            else {
+                std::cout << "-------------------------------------" << std::endl;
+                std::cout << ">>>>>>>>>>>>> GAME OVER <<<<<<<<<<<<<" << std::endl;
+                std::cout << "-------------------------------------\n" << std::endl;
+                std::cout << "You did not meet quota in time, and your employees have been fired." << std::endl;
+                std::cout << "You kept them alive for " << dayNum << " days.\n" << std::endl;
+                gameExit();
+            }
+        }
+
+        dayNum += 1;
+        employees = 4;
     }
 
     return;
@@ -117,10 +146,25 @@ void Game::land()
     std::cout << "\n\nWELCOME TO " << moon->name() << "!\n" << std::endl;
     std::cout << "Current cargo value: $" << cargoBalance << std::endl; // could/should encapsulate these in a function
     std::cout << "Current balance: $" << balance << std::endl;
-    std::cout << "Current quota: $" << quota << " (" << 4 - (dayNum % 4) << " days left to meet quota)" << std::endl;
+    std::cout << "Current quota: $" << quota << " (" << (3 - (dayNum - 1) % 4) % 4 << " days left to meet quota)" << std::endl;
     std::cout << "Number of employees: " << employees << std::endl;
 
     moon->landingMessage();
+}
+
+void Game::leave()
+{
+    isLanded = false;
+    isSameDay = false;
+    std::cout << "\n\n" << std::endl;
+}
+
+void Game::gameExit()
+{
+    //no memory cleaning needed as the only dynamically allocated memory uses smart pointers.
+    isSameDay = false; // could just call exit(0); as that would return all allocated memory to the OS,
+    isRunning = false; // however I decided to do it this way so the destructors of my dynamically allocated object will be called.
+    dayNum = 1;
 }
 
 int Game::getQuota() const

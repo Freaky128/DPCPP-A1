@@ -2,6 +2,7 @@
 
 #include "AbstractMoon.h"
 
+#include <iostream>
 #include<random>
 
 class Game;
@@ -23,4 +24,8 @@ public:
     void onDayBegin(Game& g);
     void landingMessage();
     void sendEmployees(Game& g, int count);
+
+    ~Moon() {
+        std::cout << "deleted moon" << std::endl;
+    }
 };

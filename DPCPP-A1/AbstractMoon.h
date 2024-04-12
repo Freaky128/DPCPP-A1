@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <string>
 
 class Game;
@@ -39,5 +40,9 @@ public:
         case 3:
             return "Eclisped";
         }
+    }
+
+    virtual ~AbstractMoon() {
+        std::cout << "AbstractMoon destructor" << std::endl;
     }
 };
