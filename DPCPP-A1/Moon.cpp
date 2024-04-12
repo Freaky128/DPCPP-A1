@@ -136,3 +136,8 @@ void Moon::sendEmployees(Game& g, int count)
         g.leave();
     }
 }
+
+void Moon::sellCargo(Game& g, int amount) 
+{
+    std::cout << "\nThis command is not available on this moon.\n" << std::endl;
+}

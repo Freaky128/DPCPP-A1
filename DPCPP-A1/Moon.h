@@ -24,6 +24,7 @@ public:
     void onDayBegin(Game& g);
     void landingMessage();
     void sendEmployees(Game& g, int count);
+    void sellCargo(Game& g, int amount);
 
     ~Moon() {
         std::cout << "deleted moon" << std::endl;

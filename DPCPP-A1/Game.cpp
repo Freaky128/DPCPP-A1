@@ -88,7 +88,23 @@ void Game::run()
                 }
             }
             else if (command == "sell") {
-
+                if (isLanded) {
+                    if (args.size() > 1) {
+                        std::cout << "\nBad command; the syntax is: \"sell optionalAmount\" \n" << std::endl;
+                    }
+                    else if (args.empty()) {
+                        moon->sellCargo(*this, -1);
+                    }
+                    else if (util::parsePositiveInt(args[0]) == -1) {
+                        std::cout << "\nInvalid amount \"" << args[0] << "\"\n" << std::endl;
+                    }
+                    else {
+                        moon->sellCargo(*this, util::parsePositiveInt(args[0]));
+                    }                    
+                }
+                else {
+                    std::cout << "\nThis command is not available at this time.\n" << std::endl;
+                }
             }
             else if (command == "leave") {
                 if (isLanded) {
