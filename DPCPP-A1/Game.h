@@ -17,7 +17,7 @@ private:
     bool isSameDay = true;
     int dayNum = 1;
     int quota = 150;
-    int balance = 500;
+    int balance = 50;
     int cargoBalance = 0;
     int employees = 4;
     bool isLanded = false;

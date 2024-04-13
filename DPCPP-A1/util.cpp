@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include <stdexcept>
+#include <iostream>
 
 void util::lower(std::string &str)
 {
@@ -15,6 +16,10 @@ void util::lower(std::string &str)
 int util::parsePositiveInt(const std::string &str)
 {
     try {
+        if (!std::all_of(str.begin(), str.end(), ::isdigit)) {
+            std::cout << "thrown" << std::endl;
+            throw std::invalid_argument("");
+        }
         return std::stoi(str);
     } catch(std::invalid_argument const &ex) {
     } catch(std::out_of_range const &ex) {

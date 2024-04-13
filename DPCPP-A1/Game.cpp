@@ -148,6 +148,7 @@ void Game::run()
                 std::cout << "-------------------------------------\n" << std::endl;
                 std::cout << "You did not meet quota in time, and your employees have been fired." << std::endl;
                 std::cout << "You kept them alive for " << dayNum << " days.\n" << std::endl;
+                system("pause");
                 gameExit();
             }
         }

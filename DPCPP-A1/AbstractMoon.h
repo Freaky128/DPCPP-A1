@@ -9,7 +9,7 @@ enum class MoonWeather {
     Clear = 0,
     Flooded,
     Stormy,
-    Eclisped
+    Eclipsed
 };
 
 class AbstractMoon 
