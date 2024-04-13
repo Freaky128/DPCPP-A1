@@ -16,14 +16,14 @@ private:
     float lootRecovMult;
 
 public:
-    Item(std::string name, int price, float scrapValMult, float explorerSurvivalMult, float opSurvivalMult, float saveChance, float lootRecovMult) {
-        this->name = name;
-        this->price = price;
-        this->scrapValMult = scrapValMult;
-        this->explorerSurvivalMult = explorerSurvivalMult;
-        this->opSurvivalMult = opSurvivalMult;
-        this->saveChance = saveChance;
-        this->lootRecovMult = lootRecovMult;
+    Item(std::string name, int price, float scrapValMult, float explorerSurvivalMult, float opSurvivalMult, float saveChance, float lootRecovMult)
+        : name(name),
+        price(price),
+        scrapValMult(scrapValMult),
+        explorerSurvivalMult(explorerSurvivalMult),
+        opSurvivalMult(opSurvivalMult),
+        saveChance(saveChance),
+        lootRecovMult(lootRecovMult) {
     }
 
     std::string getName() const { return name;}
@@ -36,7 +36,7 @@ public:
     float getSaveChance() const { return saveChance; }
     float getLootRecovMult() const { return lootRecovMult; }
 
-    ~Item() {
-       //std::cout << "deleted item" << std::endl;
-    }
+    /*~Item() {
+       std::cout << "deleted item" << std::endl;
+    }*/
 };

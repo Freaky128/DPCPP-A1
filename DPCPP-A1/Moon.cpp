@@ -1,16 +1,8 @@
 #include "Moon.h"
 #include "Game.h"
 
-float weatherMatrix[4][3] = { 1,    1,   1,
-                              1,    0.7, 1,
-                              0.75, 1,   1,
-                              1,    0.9, 0.7 };
-
 Moon::Moon(std::string name, int minValue, int maxValue, float baseSurvival)
-    : AbstractMoon(name) {
-    this->minValue = minValue;
-    this->maxValue = maxValue;
-    this->baseSurvival = baseSurvival;
+    : AbstractMoon(name), minValue(minValue), maxValue(maxValue), baseSurvival(baseSurvival) {
 }
 
 void Moon::onDayBegin(Game& g) 
@@ -19,7 +11,7 @@ void Moon::onDayBegin(Game& g)
     weather = static_cast<MoonWeather>(intDistribution(g.myGenerator));
 }
 
-void Moon::landingMessage()
+void Moon::landingMessage() const
 {
     if (static_cast<int>(weather) != 0) {
         std::cout << "Proceed with caution as the moon is currently " << getWeather() << std::endl;

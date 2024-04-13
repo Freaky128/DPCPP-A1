@@ -2,11 +2,10 @@
 #include "Game.h"
 
 PaidMoon::PaidMoon(std::string name, int minValue, int maxValue, float baseSurvival, int price) 
-    : Moon(name, minValue, maxValue, baseSurvival) {
-    this->price = price;
+    : Moon(name, minValue, maxValue, baseSurvival), price(price) {
 }
 
-bool PaidMoon::onNavigate(Game& g)
+bool PaidMoon::onNavigate(Game& g) const
 {
     std::cout << "\nThe cost of going to " << name() << " is $" << price << std::endl;
     std::cout << "You have $" << g.getBalance() << ". Confirm destination? [Yes/No]\n" << std::endl;

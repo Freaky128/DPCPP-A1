@@ -13,6 +13,6 @@ private:
 
 public:
     PaidMoon(std::string name, int minValue, int maxValue, float baseSurvival, int price);
-    bool onNavigate(Game& g);
+    bool onNavigate(Game& g) const;
     void print() const;
 };

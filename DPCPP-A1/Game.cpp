@@ -210,19 +210,19 @@ int Game::getEmployees() const
     return employees;
 }
 
-std::string Game::getMoonNameLower() const
+const std::string Game::getMoonNameLower() const
 {
     std::string name = moon->name();
     util::lower(name);
     return name;
 }
 
-std::string Game::getMoonName() const
+const std::string Game::getMoonName() const
 {
     return moon->name();
 }
 
-std::vector<std::shared_ptr<Item> >& Game::getItems()
+const std::vector<std::shared_ptr<Item> >& Game::getItems()
 {
     return items;
 }

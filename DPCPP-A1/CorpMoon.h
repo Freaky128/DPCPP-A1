@@ -10,7 +10,7 @@ class CorpMoon : public AbstractMoon
 {
 public:
     CorpMoon(std::string name) : AbstractMoon(name) {}
-    void landingMessage();
+    void landingMessage() const;
     void sendEmployees(Game& g, int count);
     void sellCargo(Game& g, int amount);
 };

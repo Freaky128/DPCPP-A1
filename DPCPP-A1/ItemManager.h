@@ -16,5 +16,5 @@ public:
     void registerItem(Item* item);
     void displayItems(int& balance);
     void buy(std::vector<std::string> args, Game& g);
-    void inventory(Game& g);
+    void inventory(Game& g) const;
 };

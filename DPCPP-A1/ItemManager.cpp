@@ -64,7 +64,7 @@ void ItemManager::buy(std::vector<std::string> args, Game& g)
     }
 }
 
-void ItemManager::inventory(Game& g)
+void ItemManager::inventory(Game& g) const
 {
     std::cout << "The following items are available." << std::endl;
     std::cout << "---------------------------------------\n" << std::endl;

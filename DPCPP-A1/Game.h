@@ -40,9 +40,9 @@ public:
     int getBalance() const;
     int getCargoValue() const;
     int getEmployees() const;
-    std::string getMoonNameLower() const;
-    std::string getMoonName() const;
-    std::vector<std::shared_ptr<Item> >& getItems(); // maybe should pass by value but thets kinda expensive
+    const std::string getMoonNameLower() const;
+    const std::string getMoonName() const;
+    const std::vector<std::shared_ptr<Item> >& getItems();
 
     void setBalance(int value);
     void setCargoBalance(int value);

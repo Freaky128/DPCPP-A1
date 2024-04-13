@@ -15,7 +15,7 @@ void MoonManager::registerMoon(AbstractMoon* moon)
     return;
 }
 
-std::shared_ptr<AbstractMoon> MoonManager::getStartingMoon()
+std::shared_ptr<AbstractMoon> MoonManager::getStartingMoon() const
 {
     return moons[0];
 }
