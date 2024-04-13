@@ -28,7 +28,8 @@ public:
     virtual void landingMessage() = 0;
     virtual void sendEmployees(Game& g, int count) = 0;
     virtual void sellCargo(Game& g, int amount) = 0;
-
+    virtual bool onNavigate(Game& g) { return true; }
+    virtual void print() const { std::cout << std::endl; }
     
     std::string getWeather() {
         int i = static_cast<int>(weather);

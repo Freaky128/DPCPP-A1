@@ -16,6 +16,9 @@ Game::Game() {
     moonManager.registerMoon(new Moon("Insurance", 5, 50, 0.45));
     moonManager.registerMoon(new Moon("Pledge", 30, 50, 0.40));
     moonManager.registerMoon(new Moon("Defence", 10, 70, 0.35));
+    moonManager.registerMoon(new PaidMoon("April", 20, 120, 0.30, 550));
+    moonManager.registerMoon(new PaidMoon("Tore", 100, 130, 0.25, 700));
+    moonManager.registerMoon(new PaidMoon("Hyperion", 100, 150, 0.20, 900));
 
     moon = moonManager.getStartingMoon();
 }

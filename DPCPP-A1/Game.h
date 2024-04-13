@@ -7,6 +7,7 @@
 #include "CorpMoon.h"
 #include "game_title.h"
 #include "util.h"
+#include "PaidMoon.h"
 
 #include <random>
 

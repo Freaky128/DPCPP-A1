@@ -29,11 +29,10 @@ void MoonManager::displayMoons(int &balance)
         std::cout << "* " << i->name();
         std::string weather = i->getWeather();
         if (weather != "") {
-            std::cout << " (" << i->getWeather() << ")" << std::endl;
+            std::cout << " (" << i->getWeather() << ")";
         }
-        else {
-            std::cout << std::endl;
-        }
+
+        i->print();
     }
     std::cout << "\nBalance: $" << balance << "\n" << std::endl;
 }
@@ -58,8 +57,11 @@ void MoonManager::route(std::vector<std::string> args, Game& g)
             std::string name = i->name();
             util::lower(name);
             if (args[0] == name) {
-                g.setMoon(i);
-                std::cout << "\nNow orbiting " << g.getMoonName() << ". Use the LAND command to land.\n" << std::endl;
+                if (i->onNavigate(g)) {
+                    g.setMoon(i);
+                    std::cout << "\nNow orbiting " << g.getMoonName() << ". Use the LAND command to land.\n" << std::endl;
+                }
+
                 return;
             }
         }
