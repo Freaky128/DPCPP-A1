@@ -16,7 +16,7 @@ void util::lower(std::string &str)
 int util::parsePositiveInt(const std::string &str)
 {
     try {
-        if (!std::all_of(str.begin(), str.end(), ::isdigit)) {
+        if (!std::all_of(str.begin(), str.end(), ::isdigit)) { // checks if the string contains characters besides numbers
             std::cout << "thrown" << std::endl;
             throw std::invalid_argument("");
         }

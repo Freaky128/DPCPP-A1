@@ -3,7 +3,7 @@
 Game::Game() {
     myGenerator.seed(std::random_device{}());
 
-    itemManager.registerItem(new Item("Flashlight", 60, 1, 1.05, 1, 0, 1)); // TODO: could change this to a csv reader for better dynamacy if get time
+    itemManager.registerItem(new Item("Flashlight", 60, 1, 1.05, 1, 0, 1)); // TODO: could change this to a csv reader for better dynamism if I get time
     itemManager.registerItem(new Item("Shovel", 100, 1, 1.05, 1, 0, 1));
     itemManager.registerItem(new Item("Pro-flashlight", 200, 1, 1.10, 1, 0, 1));
     itemManager.registerItem(new Item("Teleporter", 300, 1, 1, 1, 0.33, 1));
@@ -151,7 +151,7 @@ void Game::run()
                 std::cout << "-------------------------------------\n" << std::endl;
                 std::cout << "You did not meet quota in time, and your employees have been fired." << std::endl;
                 std::cout << "You kept them alive for " << dayNum << " days.\n" << std::endl;
-                system("pause");
+                system("pause"); // When built for release the console will close before the gameover message can be read. This stops that
                 gameExit();
             }
         }
@@ -167,7 +167,7 @@ void Game::land()
 {
     isLanded = true;
     std::cout << "\n\nWELCOME TO " << moon->name() << "!\n" << std::endl;
-    std::cout << "Current cargo value: $" << cargoBalance << std::endl; // could/should encapsulate these in a function
+    std::cout << "Current cargo value: $" << cargoBalance << std::endl; // could encapsulate these stats in a function
     std::cout << "Current balance: $" << balance << std::endl;
     std::cout << "Current quota: $" << quota << " (" << (3 - (dayNum - 1) % 4) % 4 << " days left to meet quota)" << std::endl;
     std::cout << "Number of employees: " << employees << std::endl;
@@ -186,7 +186,7 @@ void Game::gameExit()
 {
     //no memory cleaning needed as the only dynamically allocated memory uses smart pointers.
     isSameDay = false; // could just call exit(0); as that would return all allocated memory to the OS,
-    isRunning = false; // however I decided to do it this way so the destructors of my dynamically allocated object will be called.
+    isRunning = false; // however I decided to do it this way so the destructors of my dynamically allocated objects will be called.
     dayNum = 1;
 }
 
@@ -224,7 +224,7 @@ const std::string Game::getMoonName() const
 
 const std::vector<std::shared_ptr<Item> >& Game::getItems()
 {
-    return items;
+    return inventory;
 }
 
 void Game::setBalance(int value)
@@ -254,5 +254,5 @@ void Game::setMoon(std::shared_ptr<AbstractMoon> moon)
 
 void Game::addItem(std::shared_ptr<Item> item)
 {
-    items.push_back(item);
+    inventory.push_back(item);
 }

@@ -1,29 +1,20 @@
-#pragma once
+#ifndef ITEM_H
+#define ITEM_H
 
 #include <string>
 #include <iostream>
 
 struct Item
 {
-private:
-    std::string name;
-    bool bought = false;
-    int price;
-    float scrapValMult;
-    float explorerSurvivalMult;
-    float opSurvivalMult;
-    float saveChance;
-    float lootRecovMult;
-
 public:
-    Item(std::string name, int price, float scrapValMult, float explorerSurvivalMult, float opSurvivalMult, float saveChance, float lootRecovMult)
-        : name(name),
-        price(price),
-        scrapValMult(scrapValMult),
-        explorerSurvivalMult(explorerSurvivalMult),
-        opSurvivalMult(opSurvivalMult),
-        saveChance(saveChance),
-        lootRecovMult(lootRecovMult) {
+    Item(std::string nName, int nPrice, float nScrapValMult, float nExplorerSurvivalMult, float nOpSurvivalMult, float nSaveChance, float nLootRecovMult)
+        : name(nName),
+        price(nPrice),
+        scrapValMult(nScrapValMult),
+        explorerSurvivalMult(nExplorerSurvivalMult),
+        opSurvivalMult(nOpSurvivalMult),
+        saveChance(nSaveChance),
+        lootRecovMult(nLootRecovMult) {
     }
 
     std::string getName() const { return name;}
@@ -39,4 +30,17 @@ public:
     /*~Item() {
        std::cout << "deleted item" << std::endl;
     }*/
+
+private:
+    std::string name;
+    bool bought = false;
+    int price;
+    float scrapValMult;
+    float explorerSurvivalMult;
+    float opSurvivalMult;
+    float saveChance;
+    float lootRecovMult;
+
 };
+
+#endif //ITEM_H

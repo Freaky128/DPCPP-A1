@@ -7,12 +7,12 @@ void CorpMoon::landingMessage() const
     std::cout << "Type LEAVE to leave the planet.\n" << std::endl;
 }
 
-void CorpMoon::sendEmployees(Game& g, int count)
+void CorpMoon::sendEmployees(Game &g, int count)
 {
     std::cout << "\nThis command is not available on this moon.\n" << std::endl;
 }
 
-void CorpMoon::sellCargo(Game& g, int amount)
+void CorpMoon::sellCargo(Game &g, int amount)
 {
     if (g.getCargoValue() == 0) {
         std::cout << "\nNothing to sell.\n" << std::endl;

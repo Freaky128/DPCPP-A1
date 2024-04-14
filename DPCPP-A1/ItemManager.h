@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ITEMMANAGER_H
+#define ITEMMANAGER_H
 
 #include "Item.h"
 #include <iostream>
@@ -9,12 +10,15 @@ class Game;
 
 class ItemManager
 {
+public:
+    void registerItem(Item *item);
+    void displayItems(int &balance);
+    void buy(std::vector<std::string> args, Game &g);
+    void inventory(Game &g) const;
+
 private:
     std::vector<std::shared_ptr<Item> > items;
 
-public:
-    void registerItem(Item* item);
-    void displayItems(int& balance);
-    void buy(std::vector<std::string> args, Game& g);
-    void inventory(Game& g) const;
 };
+
+#endif //ITEMMANAGER_H

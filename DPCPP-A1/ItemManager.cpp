@@ -1,26 +1,20 @@
 #include "ItemManager.h"
 #include "Game.h"
 
-void ItemManager::registerItem(Item* item)
+void ItemManager::registerItem(Item *item)
 {
     std::shared_ptr<Item> temp(item);
-
-    //std::cout << temp->getName() << std::endl;
-    
     items.push_back(std::move(temp));
     
-    /*for (std::unique_ptr<Item>& i : items) {
-        std::cout << i->getName() << std::endl;
-    }*/
     return;
 }
 
-void ItemManager::displayItems(int& balance)
+void ItemManager::displayItems(int &balance)
 {
     std::cout << "\nWelcome to the Corporation store." << std::endl;
     std::cout << "Use the word BUY on any item." << std::endl;
     std::cout << "---------------------------------------\n" << std::endl;
-    for (std::shared_ptr<Item>& i : items) {
+    for (std::shared_ptr<Item> &i : items) {
         std::cout << "* " << i->getName() << " // ";
         if (!i->isBought()) {
             std::cout << " Price: $" << i->getPrice() << std::endl;
@@ -32,13 +26,13 @@ void ItemManager::displayItems(int& balance)
     std::cout << "\nBalance: $" << balance << "\n" << std::endl;
 }
 
-void ItemManager::buy(std::vector<std::string> args, Game& g)
+void ItemManager::buy(std::vector<std::string> args, Game &g)
 {
     if (args.empty() || args.size() > 1) {
         std::cout << "\nBad command; the syntax is: \"buy itemName\" \n" << std::endl;
     }
     else {
-        for (std::shared_ptr<Item>& i : items) {
+        for (std::shared_ptr<Item> &i : items) {
             std::string name = i->getName();
             util::lower(name);
             if (args[0] == name) {
@@ -64,7 +58,7 @@ void ItemManager::buy(std::vector<std::string> args, Game& g)
     }
 }
 
-void ItemManager::inventory(Game& g) const
+void ItemManager::inventory(Game &g) const
 {
     std::cout << "The following items are available." << std::endl;
     std::cout << "---------------------------------------\n" << std::endl;
@@ -73,7 +67,7 @@ void ItemManager::inventory(Game& g) const
         std::cout << "(Empty)" << std::endl;
     }
     else {
-        for (std::shared_ptr<Item>& i : inventory) {
+        for (std::shared_ptr<Item> &i : inventory) {
             std::cout << "* " << i->getName() << std::endl;
         }
     }

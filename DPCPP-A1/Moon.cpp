@@ -1,11 +1,11 @@
 #include "Moon.h"
 #include "Game.h"
 
-Moon::Moon(std::string name, int minValue, int maxValue, float baseSurvival)
-    : AbstractMoon(name), minValue(minValue), maxValue(maxValue), baseSurvival(baseSurvival) {
+Moon::Moon(std::string nName, int minValue, int maxValue, float nBaseSurvival)
+    : AbstractMoon(nName), minLootValue(minValue), maxLootValue(maxValue), baseSurvival(nBaseSurvival) {
 }
 
-void Moon::onDayBegin(Game& g) 
+void Moon::onDayBegin(Game &g) 
 {
     std::uniform_int_distribution<int> intDistribution(0, 3);
     weather = static_cast<MoonWeather>(intDistribution(g.myGenerator));
@@ -21,7 +21,7 @@ void Moon::landingMessage() const
     std::cout << "Type LEAVE to leave the planet. \n" << std::endl;
 }
 
-void Moon::sendEmployees(Game& g, int count)
+void Moon::sendEmployees(Game &g, int count)
 {
     int aliveEmployees = g.getEmployees();
     int numOperators = (aliveEmployees - count);
@@ -32,7 +32,7 @@ void Moon::sendEmployees(Game& g, int count)
     //std::cout << "weatherExpSurvivalMult: " << explorerSurvivalChanceMultiplier << std::endl;
 
     std::vector<std::shared_ptr<Item> > items = g.getItems();
-    for (std::shared_ptr<Item>& i : items) {
+    for (std::shared_ptr<Item> &i : items) {
         explorerSurvivalChanceMultiplier = explorerSurvivalChanceMultiplier * i->getEpSurvivalMult();
     }
 
@@ -44,7 +44,7 @@ void Moon::sendEmployees(Game& g, int count)
 
     float explorerSaveChance = 0;
 
-    for (std::shared_ptr<Item>& i : items) {
+    for (std::shared_ptr<Item> &i : items) {
         explorerSaveChance += i->getSaveChance();
     }
     
@@ -54,7 +54,7 @@ void Moon::sendEmployees(Game& g, int count)
 
     //std::cout << "weatherScrapValueMultiplier: " << scrapValueMultiplier << std::endl;
 
-    for (std::shared_ptr<Item>& i : items) {
+    for (std::shared_ptr<Item> &i : items) {
         scrapValueMultiplier = scrapValueMultiplier * i->getScrapValMult();
     }
 
@@ -62,7 +62,7 @@ void Moon::sendEmployees(Game& g, int count)
 
     double lootRecoveryMultiplier = 0.5;
 
-    for (std::shared_ptr<Item>& i : items) {
+    for (std::shared_ptr<Item> &i : items) {
         lootRecoveryMultiplier = lootRecoveryMultiplier * i->getLootRecovMult();
     }
 
@@ -71,7 +71,7 @@ void Moon::sendEmployees(Game& g, int count)
     int totalRevenue = 0;
     int deadExplorers = 0;
 
-    std::uniform_int_distribution<int> intDistribution(minValue * scrapValueMultiplier, maxValue * scrapValueMultiplier);
+    std::uniform_int_distribution<int> intDistribution(minLootValue * scrapValueMultiplier, maxLootValue * scrapValueMultiplier);
     std::uniform_real_distribution<float> realDistribution;
 
     for (int i = 0; i < count; i++) {
@@ -89,7 +89,7 @@ void Moon::sendEmployees(Game& g, int count)
 
     double operatorSurvivalChanceMultiplier = weatherMatrix[static_cast<int>(weather)][2];
 
-    for (std::shared_ptr<Item>& i : items) {
+    for (std::shared_ptr<Item> &i : items) {
         operatorSurvivalChanceMultiplier = operatorSurvivalChanceMultiplier * i->getOpSurvivalMult();
     }
 
@@ -131,7 +131,7 @@ void Moon::sendEmployees(Game& g, int count)
     }
 }
 
-void Moon::sellCargo(Game& g, int amount) 
+void Moon::sellCargo(Game &g, int amount) 
 {
     std::cout << "\nThis command is not available on this moon.\n" << std::endl;
 }

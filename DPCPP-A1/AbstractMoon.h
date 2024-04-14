@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ABSTRACTMOON_H
+#define ABSTRACTMOON_H
 
 #include <iostream>
 #include <string>
@@ -14,12 +15,6 @@ enum class MoonWeather {
 
 class AbstractMoon 
 {
-private:
-    std::string moonName;
-
-protected:
-    MoonWeather weather = MoonWeather::Clear;
-
 public:
     AbstractMoon(std::string name) : moonName(name) {}
 
@@ -30,7 +25,7 @@ public:
     virtual void sellCargo(Game& g, int amount) = 0;
     virtual bool onNavigate(Game& g) const { return true; }
     virtual void print() const { std::cout << std::endl; }
-    
+
     std::string getWeather() const {
         int i = static_cast<int>(weather);
         switch (i) {
@@ -48,4 +43,13 @@ public:
     /*virtual ~AbstractMoon() {
         std::cout << "AbstractMoon destructor" << std::endl;
     }*/
+
+protected:
+    MoonWeather weather = MoonWeather::Clear;
+
+private:
+    std::string moonName;
+
 };
+
+#endif //ABSTRACTMOON_H
